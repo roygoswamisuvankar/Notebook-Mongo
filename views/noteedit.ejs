@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Note Book</title>
+        <link rel="stylesheet" href="/public/CSS/style.css">
+        <style>
+            label{
+                font-size: 20px;
+            }
+            a{
+                text-decoration: none;
+                color: white;
+                border: none;
+                background-color: red;
+                cursor: pointer;
+                border-radius: 5px;
+                padding: 8px 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="head_name"><h1>My Note Book</h1></div>
+        <div class="container">
+            <% if(typeof note != 'undefined') { %>
+            <form action="/updatenote" method="post">
+                <label class="add_note">Add Your Note </label><br>
+                <label>Date</label><br>
+                <input type="hidden" name="id" value="<%= note.id %>" >
+                <input type="date" id="myDate" name="myDate" value="<%= note.myDate %>" required><br>
+                <label>Update Your Note</label><br>
+                <textarea id="myNote" name="myNote" required>
+                    <%= note.myNote %>
+                </textarea><br>
+                <input type="submit" value="Update Note">&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/">Cancel</a>
+            </form>
+            <% } %>
+        </div>
+    </body>
+</html>

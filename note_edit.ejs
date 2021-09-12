@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Note Book</title>
+    </head>
+    <body>
+        <h1>My Note Book</h1>
+        <div class="container">
+            
+            <form action="/update_note" method="post">
+                <label>Update Your Note </label><br>
+                <label>Date</label><br>
+                <input type="hidden" name="id" value="<%= user.id %>">
+                <input type="date" id="myDate" name="myDate" value="<%= user.myDate %>" required><br>
+                <textarea id="myNote" name="myNote" required>
+                    <%= user.myNote %>
+                </textarea><br>
+                <input type="submit" value="Save Note">
+            </form>
+           
+        </div>
+    </body>
+</html>

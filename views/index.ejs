@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My-Note Book</title>
+        <link rel="stylesheet" href="/public/CSS/style.css">
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    </head>
+    <body>
+        <div class="head_name"><h1>My Note Book</h1></div>
+        <div class="container">
+            <% if (typeof msg != 'undefined') {%>
+            <h1 style="color: green;"><%= msg %></h1>
+            <% } %>
+            <form action="/save_notes" method="post">
+                <label class="add_note">Add Your Note </label><br>
+                <label>Date</label><br>
+                <input type="date" id="myDate" name="myDate" required><br>
+                <label>Your Note</label><br>
+                <textarea id="myNote" name="myNote" required>
+                    
+                </textarea><br>
+                <input type="submit" value="Save Note">
+            </form>
+        </div>
+        <div>
+            
+        </div>
+        <div class="view">
+            <form action="/view_notes">
+                <input type="submit" value="View My notes">
+            </form>
+            <% if (typeof results != 'undefined') { %>
+            <H1 style="color: blueviolet;">My Notes</H1><br>
+            <table border="1">
+            
+                <tr>
+                    <th>Note No.</th>
+                    <th>Date</th>
+                    <th>My Notes</th>
+                    <th colspan="2">Operations</th>
+                </tr>
+                <% results.forEach(function(rows) { %>
+                <tr>
+                    <td><%= rows.id %></td>
+                    <td><%= rows.myDate %></td>
+                    <td><%= rows.myNote %></td>
+                    <td><a href="update/<%= rows.id %>" id="" ><i class='fas fa-edit' style="color: green;"></i></a></td>  
+                    <td><a href="delete/<%= rows.id %>" class="" ><i class='fas fa-eraser' style="color: red;"></i></a></td>             
+                </tr>
+             <% }); %>
+            <% } %>
+            </table>
+            
+        </div>
+    </body>
+</html>
